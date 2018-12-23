@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {addListing,changeHandler,nameInput,addressInput,cityInput,stateInput,zipInput} from '../ducks/reducer'
+import {addListing,nameInput,addressInput,cityInput,stateInput,zipInput} from '../ducks/reducer'
 
 class Wizard extends Component {
     constructor(props) {
         super(props)
     }
-
 
     render() {
 
@@ -16,22 +15,21 @@ class Wizard extends Component {
                 <h1>Add New Listing</h1>
                 <Link to='/'><button>Cancel</button></Link>
                 <p>Property Name</p>
-                <input onChange={(e) => this.props.nameInput(e.target.value)}/>
+                <input onChange={(e) => this.props.nameInput(e.target.value)}
+                    placeholder='Enter property name' value={this.props.name}/>
                 <p>Address</p>
-                <input onChange={(e) => this.props.addressInput(e.target.value)}/>
+                <input onChange={(e) => this.props.addressInput(e.target.value)}
+                    placeholder='Enter property address' value={this.props.address}/>
                 <p>City</p>
-                <input onChange={(e) => this.props.cityInput(e.target.value)}/>
+                <input onChange={(e) => this.props.cityInput(e.target.value)}
+                    placeholder='Enter property city' value={this.props.city}/>
                 <p>State</p>
-                <input onChange={(e) => this.props.stateInput(e.target.value)}/>
+                <input onChange={(e) => this.props.stateInput(e.target.value)}
+                    placeholder='Enter property state' value={this.props.state}/>
                 <p>Zip</p>
-                <input onChange={(e) => this.props.zipInput(e.target.value)}/>
-                <Link to='/'><button onClick={() => this.props.addListing(
-                    this.props.name,
-                    this.props.address,
-                    this.props.city,
-                    this.props.state,
-                    this.props.zip
-                )}>Complete</button></Link>
+                <input onChange={(e) => this.props.zipInput(e.target.value)}
+                    value={this.props.zip}/>
+                <Link to='/Wizard2'><button>Next Step</button></Link>
             </div>
         )
     }
@@ -47,5 +45,5 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {addListing,changeHandler,nameInput,addressInput,cityInput,
+export default connect(mapStateToProps, {addListing,nameInput,addressInput,cityInput,
                                         stateInput,zipInput})(Wizard);

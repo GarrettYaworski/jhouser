@@ -34,9 +34,9 @@ removeListing = (req,res) => {
 }
 
 addListing = (req,res) => {
-    const {name,address,city,state,zip} = req.body
+    const {name,address,city,state,zip,img,mortgage,rent} = req.body
     const db = req.app.get('db')
-    db.addListing([name,address,city,state,zip])
+    db.addListing([name,address,city,state,zip,img,mortgage,rent])
     .then(response => {
         res.status(200).json(response)
     })

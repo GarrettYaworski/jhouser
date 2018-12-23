@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 const GET_LISTINGS = 'GET_LISTINGS'
-const CHANGE_HANDLER = 'CHANGE_HANDLER'
-const CLEAR_HOUSE_STATE = 'CLEAR_HOUSE_STATE'
+const CLEAR_LISTING_STATE = 'CLEAR_HOUSE_STATE'
 const REMOVE_LISTING = 'REMOVE_LISTING'
 const ADD_LISTING = 'ADD_LISTING'
 const UPDATE_LISTING_NAME = 'UPDATE_LISTING_NAME'
@@ -11,11 +10,24 @@ const NAME_INPUT = 'NAME_INPUT'
 const CITY_INPUT = 'CITY_INPUT'
 const STATE_INPUT = 'STATE_INPUT'
 const ZIP_INPUT = 'ZIP_INPUT'
+const IMG_INPUT = 'IMG_INPUT'
+const MORTGAGE_INPUT = 'MORTGAGE_INPUT'
+const RENT_INPUT = 'RENT_INPUT'
 
 function reducer(state = initialState, action){
-    // console.log(action.type);
-    console.log(action.payload);
     switch(action.type) {
+        case IMG_INPUT:
+            return {
+                ...state, img: action.payload
+            }
+        case MORTGAGE_INPUT:
+            return {
+                ...state, mortgage: action.payload
+            }
+        case RENT_INPUT:
+            return {
+                ...state, rent: action.payload
+            }
         case ADDRESS_INPUT:
             return {
                 ...state, address: action.payload
@@ -40,35 +52,55 @@ function reducer(state = initialState, action){
             return {
                 ...state, name: action.payload.data
             }
-        case ADD_LISTING:
+        case `${ADD_LISTING}_FULFILLED`:
             return {
                 ...state, listings: action.payload.data
             }
-        case GET_LISTINGS:
+        case `${GET_LISTINGS}_FULFILLED`: 
             return {
                 ...state, listings: action.payload.data
             }
-        case CHANGE_HANDLER:
-            return {
-                ...state, [action.payload.name]: action.payload.value
-            }
-        case REMOVE_LISTING:
+        case `${REMOVE_LISTING}_FULFILLED`:
             return {
                 ...state, listings: action.payload.data
             }
-        case CLEAR_HOUSE_STATE:
+        case CLEAR_LISTING_STATE:
             return {
                 ...state, 
                     name: '',
                     address: '',
                     city: '',
                     state: '',
-                    zip: ''
+                    zip: '',
+                    img: '',
+                    mortgage: '',
+                    rent: ''
             }
 
         default: return state
     } 
 }  
+
+export function imgInput(img) {
+    return{
+        type: IMG_INPUT,
+        payload: img
+    }
+}
+
+export function mortgageInput(mortgage) {
+    return{
+        type: MORTGAGE_INPUT,
+        payload: mortgage
+    }
+}
+
+export function rentInput(rent) {
+    return{
+        type: RENT_INPUT,
+        payload: rent
+    }
+}
 
 export function updateListingName(name,id) {
     return {
@@ -77,10 +109,10 @@ export function updateListingName(name,id) {
     }
 }
 
-export function addListing(name,address,city,state,zip) {
+export function addListing(name,address,city,state,zip,img,mortgage,rent) {
     return {
         type: ADD_LISTING,
-        payload: axios.post('/api/listings', {name,address,city,state,zip})
+        payload: axios.post('/api/listings', {name,address,city,state,zip,img,mortgage,rent})
     }
 }
 
@@ -91,16 +123,9 @@ export function getListings() {
     }
 }
 
-export function changeHandler(name,value) {
+export function clearListingState() {
     return {
-        type: CHANGE_HANDLER,
-        payload: {name,value}
-    }
-}
-
-export function clearHouseState() {
-    return {
-        type: CLEAR_HOUSE_STATE
+        type: CLEAR_LISTING_STATE
     }
 }
 
@@ -152,7 +177,11 @@ const initialState = {
     city: '',
     state: '',
     zip: 0 ,
-    listings: []
+    listings: [],
+    img: '',
+    mortgage: 0,
+    rent: 0,
+    recRent: 0
 }
 
 
