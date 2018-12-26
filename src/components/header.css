@@ -1,7 +1,22 @@
 .header {
-    display: flex;
-    background-color: #519872;
+    height: auto;
     width: 99vw;
-    height: 10vh;
-
+    background-color: #519872;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    padding: 16px;
+    margin: none;
+    border: 2px;
+}
+.house {
+    background-color: #519872;
+    margin-left: 10vw;
+}
+.houser {
+    background-color: #519872;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    margin-left: .5vw;
 }

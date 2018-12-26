@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {removeListing,getListings,changeListing} from '../ducks/reducer'
-import dashboard from './dashboard.css'
+import './dashboard.css'
+import Header from './Header'
 
 class Dashboard extends Component {
     
@@ -44,21 +45,40 @@ class Dashboard extends Component {
         })
 
         return (
-            <div className='dash'>
-                <div className='bb'>
-                    <h1>Dashboard</h1>
-                    <Link to='/wizard'><button className='editButton'>Add New Property</button></Link>
-                </div>
+            <div>
+                <Header/>
                 <div>
-                    <span className='underline'>______________________________________________________________________________________________________________________</span>
+                    <div className='dash'>
+                        <div className='bb'>
+                            <div className='dashAndButt'>
+                                <div className='leftColumn2'></div>
+                                <div className='middleTop'>
+                                    <p>Dashboard</p>
+                                    <Link to='/wizard'><button id='addNewButton'>Add New Property</button></Link>
+                                </div>
+                                <div className='rightColumn2'></div>
+                            </div> 
+                            <div className='underLineGroup'>
+                                <div className='leftColumn2'></div>  
+                                <div className='underLine'></div> 
+                                <div className='rightColumn2'></div>
+                            </div>
+                            <div className='underLineGroup'>
+                                <div className='leftColumn2'></div>
+                                <div className='hListing'>
+                                    <h5>Home Listings</h5>
+                                </div>
+                                <div className='rightColumn2'></div>
+                            </div>
+                        </div>
+                        <div>
+                            {list}
+                        </div>     
+                    </div>
                 </div>
-                <div>
-                    <h3>Home Listings</h3>
-                </div>
-                {list}
             </div>
         )
-    } 
+    }
 }
 
 const mapStateToProps = state => state

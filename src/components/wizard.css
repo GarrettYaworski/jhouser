@@ -1,0 +1,57 @@
+.dash {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+.bb {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+.leftColumn {
+    display: flex;
+    flex-direction: row;
+    background-color: #afd4c0;
+    width: 20vw;
+    height: 80vh;
+}
+.centerData {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: flex-start;
+    background-color: #e5f4ec;;
+    width: 60vw;
+    height: auto;
+}
+.rightColumn {
+    display: flex;
+    flex-direction: row;
+    background-color: #afd4c0;
+    width: 30vw;
+    height: 80vh;
+}
+.addNewListing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60vw;
+    height: 80vh;
+    flex-direction: row;
+    font-size: 20px;
+}
+.nextButt {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+.next {
+    justify-content: flex-end;
+    background-color: #3b5249;
+    color: #dedede;
+    padding: 3px;
+}

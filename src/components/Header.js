@@ -1,11 +1,13 @@
 import React from 'react'
-import header from './header.css'
+import './header.css'
+import house from '../images/houserImg.png'
 
 export default function Header() {
 
     return (
         <div className='header'>
-            <h1>Header</h1>
+            <img src={house} className='house' ></img>
+            <span className='houser'>Houser</span>
         </div>
     )
 }
