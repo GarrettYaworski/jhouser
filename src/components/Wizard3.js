@@ -25,11 +25,7 @@ function Wizard3(props) {
                 placeholder='Please enter desired rent'
                 value={props.rent}/>
             <Link to='/wizard2'><button>Previous Step</button></Link>
-            <Link to='/'><button onClick={() => props.addListing(name,address,city,
-                                                                state,zip,img,mortgage,
-                                                                rent)}
-                                                                // onClick={() => props.clearListingState()}
-                                                                >Complete</button></Link>
+            <Link to='/'><button onClick={() => addAndClear()}>Complete</button></Link>
         </div>
     )
 }
