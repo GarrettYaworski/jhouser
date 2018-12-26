@@ -4,7 +4,7 @@ const GET_LISTINGS = 'GET_LISTINGS'
 const CLEAR_LISTING_STATE = 'CLEAR_HOUSE_STATE'
 const REMOVE_LISTING = 'REMOVE_LISTING'
 const ADD_LISTING = 'ADD_LISTING'
-const UPDATE_LISTING_NAME = 'UPDATE_LISTING_NAME'
+const CHANGE_LISTING = 'UPDATE_LISTING'
 const ADDRESS_INPUT = 'ADDRESS_INPUT'
 const NAME_INPUT = 'NAME_INPUT'
 const CITY_INPUT = 'CITY_INPUT'
@@ -48,9 +48,9 @@ function reducer(state = initialState, action){
             return {
                 ...state, zip: action.payload
             }
-        case UPDATE_LISTING_NAME:
+        case `${CHANGE_LISTING}_FULFILLED`:
             return {
-                ...state, name: action.payload.data
+                ...state, listing: action.payload.data
             }
         case `${ADD_LISTING}_FULFILLED`:
             return {
@@ -102,10 +102,10 @@ export function rentInput(rent) {
     }
 }
 
-export function updateListingName(name,id) {
+export function changeListing(name,address,city,state,zip,img,mortgage,rent,id) {
     return {
-        type: UPDATE_LISTING_NAME,
-        payload: axios.put(`/api/listings/${id}`, name), 
+        type: CHANGE_LISTING,
+        payload: axios.put(`/api/listings/${id}`, {name,address,city,state,zip,img,mortgage,rent})
     }
 }
 

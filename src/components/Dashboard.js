@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {removeListing,getListings,updateListingName} from '../ducks/reducer'
+import {removeListing,getListings,changeListing} from '../ducks/reducer'
+import dashboard from './dashboard.css'
 
 class Dashboard extends Component {
     
@@ -12,31 +13,49 @@ class Dashboard extends Component {
     render() {
         let list = this.props.listings.map((listing) => {
             return (
-                <div key={listing.id}>
-                    <p>Property Name: {listing.name}</p>
-                    <div>
-                        <button onClick={() => this.props.updateListingName(listing.id,listing.name)}>Edit</button>
-                        <button onClick={() => this.props.removeListing(listing.id)}>X</button>
+                <div className='mainDisplay'>
+                    <div className='leftColumn'></div>
+                    <div className='listingWrapper' key={listing.id}>
+                        <div>
+                            <img className='images' src={listing.img}/>
+                        </div>
+                        <div className='listingInfo'>
+                            <span>Property Name: {listing.name}</span>
+                            <span>Address: {listing.address}</span>
+                            <span>City: {listing.city}</span>
+                            <span>State: {listing.state}</span>
+                            <span>Zip: {listing.zip}</span>
+                        </div>
+                         <div className='listingInfo2'>
+                            <span>Monthly Mortgage: {listing.mortgage}</span>
+                            <span>Desired Rent: {listing.rent}</span>
+                        </div>
+                        <div className='listingInfo3'>
+                            <button className='cancelButton' onClick={() => this.props.removeListing(listing.id)}>X</button>
+                            <Link to='/editlisting'><button className='editButton' onClick={
+                                () => this.props.changeListing(listing.id,listing.name,listing.address,listing.city,
+                                                                listing.state,listing.zip,listing.img,listing.mortgage,
+                                                                listing.rent)}>Edit</button></Link>
+                        </div>
                     </div>
-                    <img src={listing.img}/>
-                    <p>Address: {listing.address}</p>
-                    <p>City: {listing.city}</p>
-                    <p>State: {listing.state}</p>
-                    <p>Zip: {listing.zip}</p>
-                    <p>Monthly Mortgage: {listing.mortgage}</p>
-                    <p>Desired Rent: {listing.rent}</p>
+                    <div className='rightColumn'></div>
                 </div>
             )
         })
 
         return (
-            <div>
-                <h1>Dashboard</h1>
-                <Link to='/wizard'><button>Add New Property</button></Link>
-                <h3>Home Listings</h3>
+            <div className='dash'>
+                <div className='bb'>
+                    <h1>Dashboard</h1>
+                    <Link to='/wizard'><button className='editButton'>Add New Property</button></Link>
+                </div>
+                <div>
+                    <span className='underline'>______________________________________________________________________________________________________________________</span>
+                </div>
+                <div>
+                    <h3>Home Listings</h3>
+                </div>
                 {list}
-                
-
             </div>
         )
     } 
@@ -44,4 +63,4 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, {removeListing,getListings,updateListingName})(Dashboard);
+export default connect(mapStateToProps, {removeListing,getListings,changeListing})(Dashboard);

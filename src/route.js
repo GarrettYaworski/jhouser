@@ -4,6 +4,7 @@ import Wizard from './components/Wizard'
 import Dashboard from './components/Dashboard'
 import Wizard2 from './components/Wizard2'
 import Wizard3 from './components/Wizard3'
+import EditListing from './components/EditListing';
 
 export default (
     <Switch>
@@ -11,5 +12,6 @@ export default (
         <Route path='/wizard' component={Wizard}/>
         <Route path='/wizard2' component={Wizard2}/>
         <Route path='/wizard3' component={Wizard3}/>
+        <Route path='/editlisting' component={EditListing}/>
     </Switch>
 )

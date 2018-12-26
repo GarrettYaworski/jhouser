@@ -1,0 +1,88 @@
+.mainDisplay {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+}
+.dash {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    background-color: #e5f4ec;
+}
+.cancel {
+    background-color: #fec2c2;
+    padding: none;
+    border: none;
+    background: none;
+}
+.editButton {
+    background-color: #8aea92;
+}
+.underline {
+    text-decoration: underline;
+    height: 1vh;
+}
+.bb {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+.leftColumn {
+    display: flex;
+    flex-direction: row;
+    background-color: #afd4c0;
+    width: 7vw;
+    height: auto;
+}
+.rightColumn {
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    background-color: #afd4c0;
+    width: 7vw;
+    height: auto;
+}
+.listingWrapper {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: flex-start;
+    background-color: #fec2c2;
+    width: 84vw;
+    height: 25vh;
+    margin-bottom: 2vh;
+    margin-left: 1vw;
+    margin-right: 1vw;  
+}
+.listingInfo {
+    display: flex;
+    flex-direction: column;
+    height: 25vh;
+    width: 45vw;
+    justify-content: flex-start;
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+.listingInfo2 {
+    height: 25vh;
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    margin-right: 1vw;
+}
+.listingInfo3 {
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: auto;
+    margin-right: 1vw;
+}
+.images {
+    height: 25vh;
+    width: 20vw;
+}

@@ -1,19 +1,24 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {mortgageInput,rentInput,addListing} from '../ducks/reducer'
+import {mortgageInput,rentInput,addListing,clearListingState} from '../ducks/reducer'
 
 function Wizard3(props) {
-    // onChange={(e) => props.recRent(e.target.value * 1.25)}
-    // {recRent}
-    const {name,address,city,state,zip,img,mortgage,rent,recRent} = props
+
+    const {name,address,city,state,zip,img,mortgage,rent} = props
+
+    function addAndClear () {
+        props.addListing(name,address,city,state,zip,img,mortgage,rent);
+        props.clearListingState();
+    }
+
     return (
         <div>
-            <Link to='/'><button>Cancel</button></Link>
-            <p>Recommended Rent: </p>
+            <Link to='/'><button onClick={() => props.clearListingState()}>Cancel</button></Link>
+            <p>Recommended Rent: {Math.trunc(mortgage*1.25)}</p>
             <p>Monthly Mortgage Amount</p>
             <input onChange={(e) => props.mortgageInput(e.target.value)}
-                placeholder='Please enter monthly mortgage amount'
+                placeholder='Monthly mortgage amount'
                 value = {props.mortgage}/>
             <p>Desired Monthly Rent</p>
             <input onChange={(e) => props.rentInput(e.target.value)}
@@ -22,7 +27,9 @@ function Wizard3(props) {
             <Link to='/wizard2'><button>Previous Step</button></Link>
             <Link to='/'><button onClick={() => props.addListing(name,address,city,
                                                                 state,zip,img,mortgage,
-                                                                rent)}>Complete</button></Link>
+                                                                rent)}
+                                                                // onClick={() => props.clearListingState()}
+                                                                >Complete</button></Link>
         </div>
     )
 }
@@ -41,4 +48,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, {rentInput,mortgageInput,addListing})(Wizard3); 
+export default connect(mapStateToProps, {rentInput,mortgageInput,addListing,clearListingState})(Wizard3); 

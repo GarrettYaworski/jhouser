@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {addListing,nameInput,addressInput,cityInput,stateInput,zipInput} from '../ducks/reducer'
+import {addListing,nameInput,addressInput,cityInput,stateInput,zipInput,clearListingState} from '../ducks/reducer'
 
 class Wizard extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class Wizard extends Component {
         return (
             <div className='AddNewListing'>
                 <h1>Add New Listing</h1>
-                <Link to='/'><button>Cancel</button></Link>
+                <Link to='/'><button onClick={() => this.props.clearListingState()}>Cancel</button></Link>
                 <p>Property Name</p>
                 <input onChange={(e) => this.props.nameInput(e.target.value)}
                     placeholder='Enter property name' value={this.props.name}/>
@@ -46,4 +46,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {addListing,nameInput,addressInput,cityInput,
-                                        stateInput,zipInput})(Wizard);
+                                        stateInput,zipInput,clearListingState})(Wizard);
