@@ -10,7 +10,7 @@
     justify-content: center;
     background-color: #e5f4ec;
 }
-.cancelButton {
+.cancelButton { 
     background-color: #fec2c2;
     padding: none;
     border: none;
@@ -20,6 +20,7 @@
 .editButton {
     background-color: #8aea92;
     margin-bottom: 1vh;
+    font-weight: bold;
 }
 .underLineGroup {
     display: flex;

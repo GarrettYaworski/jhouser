@@ -1,22 +1,22 @@
-.dasher {
+.dasher2 {
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
 }
-.bbb {
+.bbb2 {
     display: flex;
     flex-direction: row;
     align-content: flex-start;
     justify-content: flex-start;
     align-items: stretch;
 }
-.leftColumn4 {
+.leftColumn5 {
     background-color: #afd4c0;
     width: 22vw;
     height: 88vh;
 }
-.centerData4 {
+.centerData5 {
     display: flex;
     align-content: center;
     flex-direction: column;
@@ -27,7 +27,12 @@
     width: 56vw;
     height: auto;
 }
-.nameAndCanc {
+.rightColumn5 {
+    background-color: #afd4c0;
+    width: 22vw;
+    height: auto;
+}
+.nameAndCanc2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -35,7 +40,7 @@
     width: 56vw;
     margin-left: 1vw;
 }
-.cancButt {
+.cancButt2 {
     background-color: #fec2c2;
     border: none;
     font-size: 12px;
@@ -43,72 +48,39 @@
     margin-right: 2vw;
     padding: 3px
 }
-.propName {
+.imgField {
     display: flex;
     flex-direction: column;
     margin-left: 7vw;
     font-weight: bold;
-    width: 25vw;
-}
-.propField {
-    border: 1px solid #519872;
-}
-.addField {
-    display: flex;
-    flex-direction: column;
-    margin-left: 7vw;
-    font-weight: bold;
-    margin-top: 2vh;
-    width: 43vw;
-}
-.addInput {
-    border: 1px solid #519872;
-}
-.rightColumn4 {
-    background-color: #afd4c0;
-    width: 22vw;
-    height: auto;
-}
-.cszField {
-    display: flex;
-    margin-left: 7vw;
-    font-weight: bold;
-    margin-top: 2vh;
-}
-.addInput {
-    border: 1px solid #519872;
     width: 40vw;
 }
-.cField {
-    display: flex;
-    width: 15vw;
-    flex-direction: column;
+.imgInput {
+    border: 1px solid #519872;
 }
-.sField {
-    display: flex;
-    width: 5vw;
-    flex-direction: column;
-    margin-left: 2vw;
-}
-.zField {
-    display: flex;
-    width: 8vw;
-    flex-direction: column;
-    margin-left: 2vw;
-}
-.nButt {
+.preNextButt {
     display: flex;
     width: 56vw;
-    height: 50vh;
-    justify-content: flex-end;
-    align-items: flex-end; 
+    height: 70vh;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: space-between;
 }
-.next {
+.pre {
+    margin-left: 2vw;
+    margin-bottom: 5vh;
     background-color: #3b5249;
-    color: #dedede;
-    padding: 3px;
     border: none;
+    padding: 3px;
+    color: #dedede;
+    font-weight: bold;
+}
+.nex {
     margin-right: 2vw;
-    margin-bottom: 2vh;
+    margin-bottom: 5vh;
+    background-color: #3b5249;
+    border: none;
+    padding: 3px;
+    color: #dedede;
     font-weight: bold;
 }
