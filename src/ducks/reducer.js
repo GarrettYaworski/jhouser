@@ -115,7 +115,7 @@ export function rentInput(rent) {
     }
 }
 
-export function changeListing(id,name,address,city,state,zip,img,mortgage,rent) {
+export function changeListing(name,address,city,state,zip,img,mortgage,rent,id) {
     return {
         type: CHANGE_LISTING,
         payload: axios.put(`/api/listings/${id}`, {name,address,city,state,zip,img,mortgage,rent})

@@ -22,41 +22,41 @@ function EditListing(props) {
                                 </div>
                                 <div className='name7'>
                                     <span>Property Name</span>
-                                    <input type='text' value={props.name} onChange={(e) => props.nameInput(e.target.value)}/>
+                                    <input type='text' placeholder={props.name} onChange={(e) => props.nameInput(e.target.value)}/>
                                 </div>
                                 <div className='add7'>
                                     <span>Address</span>
-                                    <input type='text' value={props.address} onChange={(e) => props.addressInput(e.target.value)}/>
+                                    <input type='text' placeholder={props.address} onChange={(e) => props.addressInput(e.target.value)}/>
                                 </div>
                                 <div className='csz7'>
                                     <div className='cit7'>
                                         <span>City</span>
-                                        <input type='text' value={props.city} onChange={(e) => props.cityInput(e.target.value)}/>
+                                        <input type='text' placeholder={props.city} onChange={(e) => props.cityInput(e.target.value)}/>
                                     </div>
                                     <div className='st7'>
                                         <span>State</span>
-                                        <input type='text' value={props.state} onChange={(e) => props.stateInput(e.target.value)}/>
+                                        <input type='text' placeholder={props.state} onChange={(e) => props.stateInput(e.target.value)}/>
                                     </div>
                                     <div className='zip7'>
                                         <span>Zip</span> 
-                                        <input type='text' value={props.zip} onChange={(e) => props.zipInput(e.target.value)}/>
+                                        <input type='text' placeholder={props.zip} onChange={(e) => props.zipInput(e.target.value)}/>
                                     </div>
                                 </div>
                                 <div className='img7'>
                                     <span>Image URL</span> 
-                                    <input type='text' value={props.img} onChange={(e) => props.imgInput(e.target.value)}/>
+                                    <input type='text' placeholder={props.img} onChange={(e) => props.imgInput(e.target.value)}/>
                                 </div>
                                 <div className='mtg7'>
                                     <span>Monthly Mortgage</span> 
-                                    <input type='text' value={props.mortgage} onChange={(e) => props.mortgageInput(e.target.value)}/>
+                                    <input type='text' placeholder={props.mortgage} onChange={(e) => props.mortgageInput(e.target.value)}/>
                                 </div>
                                 <div className='rent7'>
                                     <span>Desired Rent</span>
-                                    <input type='text' value={props.rent} onChange={(e) => props.rentInput(e.target.value)}/>
+                                    <input type='text' placeholder={props.rent} onChange={(e) => props.rentInput(e.target.value)}/>
                                 </div> 
                                 <div className='butt7'>
                                     <Link to='/'><button className='canc7' onClick={() => props.clearListingState()}>Cancel</button></Link>
-                                    <Link to='/'><button className='sub7' onClick={() => props.changeListing(id,name,address,city,state,zip,img,mortgage,rent)}>
+                                    <Link to='/'><button className='sub7' onClick={() => props.changeListing(name,address,city,state,zip,img,mortgage,rent,id)}>
                                         Submit Changes</button></Link>
                                 </div>
                             </div>
@@ -71,6 +71,7 @@ function EditListing(props) {
 
 function mapStateToProps(state) {
     return {
+        id: state.id,
         name: state.name,
         address: state.address,
         city: state.city,

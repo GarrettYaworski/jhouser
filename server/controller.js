@@ -11,9 +11,10 @@ getListings = (req,res) => {
 }
 
 changeListing = (req,res) => {
-    const {name,address,city,state,zip,img,mortgage,rent} = req.query
+    console.log(req.body)
+    const {name,address,city,state,zip,img,mortgage,rent} = req.body
     const db = req.app.get('db')
-    db.changeListing([name,address,city,state,zip,img,mortgage,rent,req.params.id])
+    db.changeListing([req.params.id,name,address,city,state,zip,img,mortgage,rent])
     .then((response) => {
         res.status(200).json(response)})
     .catch(err => {
