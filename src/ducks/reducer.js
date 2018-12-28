@@ -4,8 +4,9 @@ const GET_LISTINGS = 'GET_LISTINGS'
 const CLEAR_LISTING_STATE = 'CLEAR_HOUSE_STATE'
 const REMOVE_LISTING = 'REMOVE_LISTING'
 const ADD_LISTING = 'ADD_LISTING'
-const CHANGE_LISTING = 'UPDATE_LISTING'
+const CHANGE_LISTING = 'CHANGE_LISTING'
 const ADDRESS_INPUT = 'ADDRESS_INPUT'
+const ID_INPUT = 'ID_INPUT'
 const NAME_INPUT = 'NAME_INPUT'
 const CITY_INPUT = 'CITY_INPUT'
 const STATE_INPUT = 'STATE_INPUT'
@@ -16,6 +17,10 @@ const RENT_INPUT = 'RENT_INPUT'
 
 function reducer(state = initialState, action){
     switch(action.type) {
+        case ID_INPUT:
+            return {
+                ...state, id: action.payload
+            }
         case IMG_INPUT:
             return {
                 ...state, img: action.payload
@@ -67,6 +72,7 @@ function reducer(state = initialState, action){
         case CLEAR_LISTING_STATE:
             return {
                 ...state, 
+                    id: '',
                     name: '',
                     address: '',
                     city: '',
@@ -81,28 +87,35 @@ function reducer(state = initialState, action){
     } 
 }  
 
+export function idInput(id) {
+    return {
+        type: ID_INPUT,
+        payload: id
+    }
+}
+
 export function imgInput(img) {
-    return{
+    return {
         type: IMG_INPUT,
         payload: img
     }
 }
 
 export function mortgageInput(mortgage) {
-    return{
+    return {
         type: MORTGAGE_INPUT,
         payload: mortgage
     }
 }
 
 export function rentInput(rent) {
-    return{
+    return {
         type: RENT_INPUT,
         payload: rent
     }
 }
 
-export function changeListing(name,address,city,state,zip,img,mortgage,rent,id) {
+export function changeListing(id,name,address,city,state,zip,img,mortgage,rent) {
     return {
         type: CHANGE_LISTING,
         payload: axios.put(`/api/listings/${id}`, {name,address,city,state,zip,img,mortgage,rent})
@@ -172,6 +185,7 @@ export function zipInput(zip) {
 }
 
 const initialState = {
+    id: '',
     name: '',
     address: '',
     city: '',
@@ -183,6 +197,5 @@ const initialState = {
     rent: 0,
     recRent: 0
 }
-
 
 export default reducer;

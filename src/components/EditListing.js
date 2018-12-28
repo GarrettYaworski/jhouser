@@ -1,7 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {changeListing,clearListingState,nameInput} from '../ducks/reducer'
+import {changeListing,clearListingState,nameInput,addressInput,cityInput,stateInput,zipInput,
+        imgInput,mortgageInput,rentInput} from '../ducks/reducer'
 import Header from './Header'
 import './editListing.css'
 
@@ -55,8 +56,8 @@ function EditListing(props) {
                                 </div> 
                                 <div className='butt7'>
                                     <Link to='/'><button className='canc7' onClick={() => props.clearListingState()}>Cancel</button></Link>
-                                    <button className='sub7' onClick={() => props.changeListing(id,name,address,city,state,zip,img,mortgage,rent)}>
-                                        Submit Changes</button>
+                                    <Link to='/'><button className='sub7' onClick={() => props.changeListing(id,name,address,city,state,zip,img,mortgage,rent)}>
+                                        Submit Changes</button></Link>
                                 </div>
                             </div>
                             <div className='rightColumn7'></div>
@@ -82,4 +83,5 @@ function mapStateToProps(state) {
 }
  
 
-export default connect(mapStateToProps, {clearListingState,changeListing,nameInput})(EditListing);
+export default connect(mapStateToProps, {clearListingState,changeListing,nameInput,addressInput,cityInput,
+                                        stateInput,zipInput,imgInput,mortgageInput,rentInput})(EditListing);

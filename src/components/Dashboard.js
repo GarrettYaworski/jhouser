@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {removeListing,getListings,changeListing} from '../ducks/reducer'
+import {removeListing,getListings,changeListing,idInput} from '../ducks/reducer'
 import './dashboard.css'
 import Header from './Header'
 
@@ -14,9 +14,9 @@ class Dashboard extends Component {
     render() {
         let list = this.props.listings.map((listing) => {
             return (
-                <div className='mainDisplay'>
+                <div key={listing.id} className='mainDisplay'>
                     <div className='leftColumn'></div>
-                    <div className='listingWrapper' key={listing.id}>
+                    <div className='listingWrapper'>
                         <div>
                             <img className='images' src={listing.img}/>
                         </div>
@@ -34,15 +34,18 @@ class Dashboard extends Component {
                         <div className='listingInfo3'>
                             <button className='cancelButton' onClick={() => this.props.removeListing(listing.id)}>X</button>
                             <Link to='/editlisting'><button className='editButton' onClick={
-                                () => this.props.changeListing(listing.id,listing.name,listing.address,listing.city,
-                                                                listing.state,listing.zip,listing.img,listing.mortgage,
-                                                                listing.rent)}>Edit</button></Link>
+                                () => this.props.idInput(listing.id)}>Edit</button></Link>
                         </div>
                     </div>
                     <div className='rightColumn'></div>
                 </div>
             )
         })
+
+        // listing.name,listing.address,listing.city,
+        //                                                         listing.state,listing.zip,listing.img,listing.mortgage,
+        //                                                         listing.rent
+        console.log(this.props.id);
 
         return (
             <div>
@@ -83,4 +86,4 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, {removeListing,getListings,changeListing})(Dashboard);
+export default connect(mapStateToProps, {removeListing,getListings,changeListing,idInput})(Dashboard);
